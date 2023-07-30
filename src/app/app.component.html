@@ -1,3 +1,33 @@
 <div class="container py-4">
-<h1>ANGULAR (Z2H): Template Reference Variable & @ViewChild decorator task</h1>
+  <h1 class="mb-4">
+    ANGULAR (Z2H): Template Reference Variable & @ViewChild decorator task
+  </h1>
+
+  <div #heading></div>
+
+  <form>
+    <div class="row">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter word"
+          #textInput
+          (input)="analyzeWord(textInput.value)"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div class="mt-4" *ngIf="textInput.value.length > 0">
+    <h2 class="mb-2">Results:</h2>
+
+    <h5>Number of characters:</h5>
+    <div>{{ textInput.value.length }}</div>
+
+    <h5>Vowels:</h5>
+    <div *ngFor="let vowel of vowels">
+      {{ vowel.letter }}: {{ vowel.count }}
+    </div>
+  </div>
 </div>
